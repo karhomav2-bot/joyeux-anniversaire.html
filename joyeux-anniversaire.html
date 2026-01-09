@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Joyeux Anniversaire</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ff4d6d, #ffb703);
+  text-align: center;
+  padding: 30px;
+  color: #fff;
+}
+
+.logo {
+  max-width: 150px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 32px;
+  margin: 20px 0;
+}
+
+input {
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 6px;
+  border: none;
+  width: 80%;
+  max-width: 300px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 22px;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  background: #fff;
+  color: #ff4d6d;
+  cursor: pointer;
+}
+
+.footer {
+  margin-top: 30px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔰 LOGO ENTREPRISE -->
+<img src="logo.png" alt="Logo entreprise" class="logo">
+
+<!-- 🎂 MESSAGE -->
+<h1 id="message">🎉 Joyeux anniversaire ! 🎂</h1>
+
+<p>Écris le nom :</p>
+<input type="text" id="nom" placeholder="Nom de la personne" oninput="changerNom()">
+
+<br>
+<button onclick="partager()">📤 Partager</button>
+
+<!-- 🎵 MUSIQUE -->
+<audio autoplay loop>
+  <source src="anniversaire.mp3" type="audio/mpeg">
+</audio>
+
+<div class="footer">
+✨ Avec tous nos vœux de bonheur ✨
+</div>
+
+<script>
+function changerNom() {
+  let nom = document.getElementById("nom").value;
+  document.getElementById("message").innerText =
+    nom ? "🎉 Joyeux anniversaire " + nom + " 🎂" : "🎉 Joyeux anniversaire ! 🎂";
+}
+
+function partager() {
+  let nom = document.getElementById("nom").value;
+  let texte = nom
+    ? "🎉 Joyeux anniversaire " + nom + " 🎂"
+    : "🎉 Joyeux anniversaire 🎂";
+
+  if (navigator.share) {
+    navigator.share({ text: texte });
+  } else {
+    alert("Copie le lien et partage-le 👍");
+  }
+}
+</script>
+
+</body>
+</html>
